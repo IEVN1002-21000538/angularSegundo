@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
-interface Usuaarios{
+interface Usuarios{
   nombre:string;
   edad:number;
   email:string;
@@ -22,6 +22,14 @@ interface Usuaarios{
 export class Ejemplo1Component implements OnInit{
   formGroup!:FormGroup;
 
+  materia='pwa'
+  tem=''
+  alumnos:Usuarios={
+    nombre:'',
+    edad:0,
+    email:''
+  }
+
   constructor(private fb:FormBuilder){}
 
   ngOnInit(): void {
@@ -35,6 +43,23 @@ export class Ejemplo1Component implements OnInit{
     })
   }
   onSubmit():void{
-    console.log(this.formGroup.value)
+    //desestructuracion
+    const{nombre,edad,email}=this.formGroup.value;
+    this.alumnos.nombre=nombre;
+    this.alumnos.edad=edad;
+    this.alumnos.email=email;
+
+    console.log(this.formGroup.value);
+    localStorage.setItem('materia',this.materia);
+  }
+
+  subImprimir():void{
+    //se le agrega el ! porque no sabemos cual es el valor que va a llegar de tem
+    this.tem=localStorage.getItem('materia')!
+    const alumnoGuardado=localStorage.getItem('alumno')
+    if(alumnoGuardado){
+      const alumno:Usuarios=JSON.parse(alumnoGuardado)
+    }
+    //console.log(this.alumnos);
   }
 }
