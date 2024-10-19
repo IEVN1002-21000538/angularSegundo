@@ -1,0 +1,82 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .formulario {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  
+  .formulario label {
+    margin-bottom: 5px;
+  }
+  
+  .formulario input {
+    margin-bottom: 15px;
+    padding: 8px;
+    font-size: 16px;
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  .eliminar {
+    background-color: #dc3545;
+  }
+  
+  .tabla {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .tabla th, .tabla td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+  }
+  
+  .btn-actualizar:hover {
+    background-color: #046cdc;
+  }
+  
+  /* Botón verde para "Modificar" */
+  .btn-modificar {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+  
+  .btn-modificar:hover {
+    background-color: #218838;
+  }
+  
+  /* Botón rojo para "Eliminar" */
+  .btn-eliminar {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+  
+  .btn-eliminar:hover {
+    background-color: #c82333;
+  }
+  .titulo-grande {
+    font-size: 2rem; /* Puedes ajustar el tamaño según prefieras */
+  }
+  

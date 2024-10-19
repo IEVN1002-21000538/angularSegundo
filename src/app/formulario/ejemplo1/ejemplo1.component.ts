@@ -57,6 +57,7 @@ export class Ejemplo1Component implements OnInit{
     //se le agrega el ! porque no sabemos cual es el valor que va a llegar de tem
     this.tem=localStorage.getItem('materia')!
     const alumnoGuardado=localStorage.getItem('alumno')
+    //local storage
     if(alumnoGuardado){
       const alumno:Usuarios=JSON.parse(alumnoGuardado)
     }

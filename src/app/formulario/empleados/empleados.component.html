@@ -1,0 +1,67 @@
+<div class="container">
+    
+    <form [formGroup]="formGroup" (ngSubmit)="registrarOActualizarEmpleado()" class="formulario">
+      <h3 class="text-center mb-5 font-bold titulo-grande">Registro de empleados</h3>
+      <label>Matrícula:</label>
+      <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+      formControlName="matricula" type="text" required />
+      <label>Nombre:</label>
+      <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+      formControlName="nombre" type="text" required />
+      <label>Correo:</label>
+      <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+      formControlName="correo" type="email" required />
+      <label>Edad:</label>
+      <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+      formControlName="edad" type="number" required />
+      <label>Horas trabajadas:</label>
+      <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+      formControlName="horasTrabajadas" type="number" required />
+  
+      
+      <button type="submit" class="btn btn-actualizar">{{ empleadoEnEdicion ? 'Actualizar' : 'Registrar' }}</button>
+    </form>
+  
+    <div class="acciones">
+      <button (click)="buscarEmpleadoPorMatricula()" class="btn btn-modificar">Modificar</button>
+      <button (click)="eliminarEmpleadoPorMatricula()" class="btn btn-eliminar">Eliminar</button>
+      <button (click)="imprimirTabla()" class="btn btn-success">Imprimir Tabla</button>
+
+    </div>
+  
+    
+    <table class="tabla">
+      <thead>
+        <tr>
+          <th>Matrícula</th>
+          <th>Nombre</th>
+          <th>Correo</th>
+          <th>Edad</th>
+          <th>Horas Trabajadas</th>
+          <th>Sueldo Base</th>
+          <th>Horas Extras</th>
+          <th>Pago Horas Extras (140xhora)</th>
+          <th>SubTotal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let empleado of empleados; trackBy: trackByMatricula">
+          <td>{{ empleado.matricula }}</td>
+          <td>{{ empleado.nombre }}</td>
+          <td>{{ empleado.correo }}</td>
+          <td>{{ empleado.edad }}</td>
+          <td>{{ empleado.horasTrabajadas }}</td>
+          <td>{{ calcularSueldoBase(empleado.horasTrabajadas) }}</td> 
+          <td>{{ calcularHorasExtras(empleado.horasTrabajadas) }}</td> 
+          <td>{{ calcularHorasExtras(empleado.horasTrabajadas) * 140 }}</td>
+          <td>{{ calcularSubTotal(empleado.horasTrabajadas) }}</td> 
+        </tr>
+      </tbody>
+    </table>
+  
+    
+    <div>
+      <h3 class="text-right mb-5 font-bold titulo-grande">Total a Pagar: {{ calcularTotalPagar() }}</h3>
+    </div>
+  </div>
+  
